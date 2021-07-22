@@ -1,0 +1,8 @@
+{
+  "name": "IonVision",
+  "integrations": {
+    "capacitor": {},
+    "cordova": {}
+  },
+  "type": "angular"
+}

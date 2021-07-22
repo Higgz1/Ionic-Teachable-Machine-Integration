@@ -1,0 +1,49 @@
+<ion-header>
+	<ion-toolbar class="new-background-color">
+	  <ion-buttons slot="start">
+		 <ion-back-button></ion-back-button>
+	  </ion-buttons>
+ 
+	  <ion-title>Product Sub Categories</ion-title>
+ 
+	</ion-toolbar>
+ </ion-header>
+
+<ion-content>
+
+	<p class="content-title border-bottom">Upload Product Image</p>
+
+	<div *ngIf="classifyImage" class="box padding">
+		<img src="{{ classifyImage }}" alt="">
+	</div>
+	<!-- <div *ngIf="!productImage" class="box padding">
+		<img src="assets/img/blank.jpg">
+	</div> -->
+
+	<ion-item *ngIf="isCordova">
+		<ion-button slot="end" fill="clear" (click)="startUpload(img)">
+			<ion-icon slot="icon-only" name="cloud-upload"></ion-icon>
+		</ion-button>
+		<ion-button slot="end" fill="clear" (click)="deleteImage()">
+			<ion-icon slot="icon-only" name="trash"></ion-icon>
+		</ion-button>
+	</ion-item>
+
+	<form #productForm="ngForm" novalidate>
+		<ion-item *ngIf="!isCordova" style="margin-right: 15px;">
+			<input type="file" class="inputfile" type="file" id="cameraFile" name="cameraFile" [(ngModel)]="cameraFile" accept="image/*" capture (change)="fileChangeEvent($event)">
+			<label slot="end" for="cameraFile"><ion-icon name="camera" class="file-icon"></ion-icon></label>
+			<input class="inputfile" type="file" id="imageFile" name="imageFile" [(ngModel)]="imageFile" accept="image/*" (change)="fileChangeEvent($event)">
+			<label slot="end" for="imageFile"><ion-icon name="cloud-upload" class="file-icon"></ion-icon></label>
+			<ion-button slot="end" fill="clear" (click)="deleteImage()">
+				<ion-icon slot="icon-only" name="trash"></ion-icon>
+			</ion-button>
+		</ion-item>
+
+
+		<div class="padding">
+			<ion-button (click)="save(productForm)" type="submit" expand="block">Save and Finish</ion-button>
+		</div>
+	</form>
+
+</ion-content>

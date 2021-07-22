@@ -1,0 +1,35 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title> Classify </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <p class="content-title border-bottom">Take Product Image to Classify</p>
+
+  <div *ngIf="capturedSnapURL" class="box padding">
+    <img src="{{capturedSnapURL}}" alt="" />
+  </div>
+
+  <div *ngIf="!capturedSnapURL" class="box padding">
+    <img src="assets/nopic.svg" alt="" />
+  </div>
+
+  <form #productForm="ngForm" novalidate>
+    <!-- <ion-item *ngIf="!isCordova" style="margin-right: 15px;">
+      <input type="file" class="inputfile" type="file" id="cameraFile" name="cameraFile" [(ngModel)]="cameraFile" accept="image/*" capture (change)="fileChangeEvent($event)">
+			<label slot="end" for="cameraFile"><ion-icon name="camera" class="file-icon"></ion-icon></label>
+    </ion-item> -->
+
+    <!-- <li *ngFor="let item of predictions">{{item.className}} : {{item.probability *100}}(%)</li> -->
+    <p *ngIf="item" class="item-title border-bottom">Item is {{item.className}} with a score of {{item.probability*100 | number}}%</p>
+    <p *ngIf="message" class="item-title border-bottom">{{message}}</p>
+
+    <div class="padding">
+      <ion-button (click)="pickImage()" type="submit" expand="block"
+        >camera </ion-button
+      >
+    </div>
+  </form>
+</ion-content>
+
